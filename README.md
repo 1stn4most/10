@@ -13,6 +13,25 @@ _Get started using GitHub in less than an hour._
 
 </header>
 
+---
+
+## 🎮 Time Warp Galaga Game
+
+This repository now includes a fully playable Galaga-style space shooter game with a unique **Time Warp** mechanic!
+
+### Quick Start
+
+Navigate to the `game/` folder and open `index.html` in your browser to play!
+
+**Controls:**
+- Arrow Keys / A & D: Move
+- SPACE: Shoot
+- SHIFT: Activate Time Warp (slow down time!)
+
+For detailed instructions, see [game/README.md](game/README.md)
+
+---
+
 <!--
   <<< Author notes: Step 1 >>>
   Choose 3-5 steps for your course.

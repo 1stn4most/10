@@ -1,0 +1,228 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Courier New', monospace;
+    background: linear-gradient(135deg, #0a0a1a 0%, #1a0a2e 50%, #0a0a1a 100%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    color: #fff;
+    overflow: hidden;
+}
+
+.game-container {
+    background: rgba(0, 0, 0, 0.8);
+    border: 3px solid #00ffff;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 0 30px rgba(0, 255, 255, 0.5);
+    max-width: 900px;
+    width: 100%;
+}
+
+.header {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.header h1 {
+    color: #00ffff;
+    text-shadow: 0 0 10px #00ffff, 0 0 20px #00ffff;
+    font-size: 2em;
+    margin-bottom: 15px;
+    animation: glow 2s ease-in-out infinite alternate;
+}
+
+@keyframes glow {
+    from {
+        text-shadow: 0 0 10px #00ffff, 0 0 20px #00ffff;
+    }
+    to {
+        text-shadow: 0 0 20px #00ffff, 0 0 30px #00ffff, 0 0 40px #00ffff;
+    }
+}
+
+.info-panel {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding: 15px;
+    background: rgba(0, 255, 255, 0.1);
+    border-radius: 8px;
+    border: 1px solid rgba(0, 255, 255, 0.3);
+}
+
+.stat {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.label {
+    color: #00ffff;
+    font-weight: bold;
+    font-size: 1.1em;
+}
+
+.stat span:last-child {
+    color: #fff;
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+.time-warp-meter {
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.meter {
+    width: 150px;
+    height: 20px;
+    background: rgba(0, 0, 0, 0.5);
+    border: 2px solid #00ffff;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.meter-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #ff00ff 0%, #00ffff 100%);
+    transition: width 0.3s ease;
+    box-shadow: 0 0 10px #ff00ff;
+}
+
+#gameCanvas {
+    display: block;
+    width: 100%;
+    background: #000;
+    border: 2px solid #00ffff;
+    border-radius: 5px;
+    cursor: none;
+}
+
+.screen {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(0, 0, 0, 0.95);
+    border: 3px solid #00ffff;
+    border-radius: 15px;
+    padding: 40px;
+    text-align: center;
+    box-shadow: 0 0 50px rgba(0, 255, 255, 0.7);
+    max-width: 600px;
+    z-index: 10;
+}
+
+.screen h2 {
+    color: #00ffff;
+    font-size: 3em;
+    margin-bottom: 20px;
+    text-shadow: 0 0 20px #00ffff;
+}
+
+.tagline {
+    color: #ff00ff;
+    font-size: 1.2em;
+    margin-bottom: 30px;
+    font-style: italic;
+}
+
+.instructions {
+    text-align: left;
+    margin: 30px 0;
+    padding: 20px;
+    background: rgba(0, 255, 255, 0.1);
+    border-radius: 10px;
+    border: 1px solid rgba(0, 255, 255, 0.3);
+}
+
+.instructions h3 {
+    color: #ff00ff;
+    margin-bottom: 15px;
+    font-size: 1.3em;
+}
+
+.instructions p {
+    margin: 10px 0;
+    line-height: 1.6;
+    color: #fff;
+}
+
+.instructions strong {
+    color: #00ffff;
+}
+
+.game-button {
+    background: linear-gradient(135deg, #ff00ff 0%, #00ffff 100%);
+    border: none;
+    color: #fff;
+    padding: 15px 40px;
+    font-size: 1.5em;
+    font-weight: bold;
+    font-family: 'Courier New', monospace;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 0 20px rgba(255, 0, 255, 0.5);
+}
+
+.game-button:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 30px rgba(255, 0, 255, 0.8);
+}
+
+.game-button:active {
+    transform: scale(0.95);
+}
+
+.hidden {
+    display: none !important;
+}
+
+.final-score, .final-level {
+    font-size: 1.5em;
+    margin: 20px 0;
+    color: #fff;
+}
+
+.final-score span, .final-level span {
+    color: #00ffff;
+    font-weight: bold;
+}
+
+.level-message {
+    font-size: 1.3em;
+    color: #ff00ff;
+    margin: 20px 0;
+}
+
+@media (max-width: 768px) {
+    .game-container {
+        padding: 10px;
+    }
+    
+    .header h1 {
+        font-size: 1.5em;
+    }
+    
+    .info-panel {
+        gap: 10px;
+    }
+    
+    .screen {
+        padding: 20px;
+        max-width: 90%;
+    }
+    
+    .screen h2 {
+        font-size: 2em;
+    }
+}
