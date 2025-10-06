@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customer Scheduling & Route Optimizer</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🗓️ Customer Scheduling & Route Optimizer</h1>
+            <p>Upload customer data and generate fuel-efficient routes for your teams</p>
+        </header>
+
+        <div class="main-content">
+            <!-- Upload Section -->
+            <section class="card upload-section">
+                <h2>📤 Upload Customer Data</h2>
+                <p class="info-text">Upload a CSV file with customer information (Name, Address, Last Service Date, Frequency, Special Instructions)</p>
+                <div class="upload-area">
+                    <input type="file" id="fileInput" accept=".csv,.xlsx" />
+                    <button id="uploadBtn" class="btn btn-primary">Upload File</button>
+                    <span id="fileName" class="file-name"></span>
+                </div>
+                <div class="sample-format">
+                    <h3>Expected CSV Format:</h3>
+                    <pre>Name,Address,Last Service Date,Frequency,Special Instructions
+ABC Company,123 Main St,2024-01-15,Monthly,Use back entrance
+XYZ Corp,456 Oak Ave,2024-01-10,Quarterly,Call before arrival</pre>
+                </div>
+            </section>
+
+            <!-- Manual Entry Section -->
+            <section class="card manual-entry">
+                <h2>✏️ Manual Entry</h2>
+                <form id="customerForm">
+                    <div class="form-group">
+                        <label for="customerName">Customer Name:</label>
+                        <input type="text" id="customerName" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="customerAddress">Address:</label>
+                        <input type="text" id="customerAddress" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="lastServiceDate">Last Service Date:</label>
+                        <input type="date" id="lastServiceDate" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="frequency">Cleaning Frequency:</label>
+                        <select id="frequency" required>
+                            <option value="">Select frequency...</option>
+                            <option value="Weekly">Weekly</option>
+                            <option value="Bi-Weekly">Bi-Weekly</option>
+                            <option value="Semi-Monthly">Semi-Monthly</option>
+                            <option value="Monthly">Monthly</option>
+                            <option value="Quarterly">Quarterly</option>
+                            <option value="Semi-Annually">Semi-Annually</option>
+                            <option value="Annually">Annually</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="specialInstructions">Special Instructions:</label>
+                        <textarea id="specialInstructions" rows="3"></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Add Customer</button>
+                </form>
+            </section>
+
+            <!-- Customer List -->
+            <section class="card customer-list">
+                <h2>👥 Customer Database</h2>
+                <div class="toolbar">
+                    <button id="generateScheduleBtn" class="btn btn-success">📅 Generate Schedule</button>
+                    <button id="optimizeRouteBtn" class="btn btn-info">🗺️ Optimize Routes</button>
+                    <button id="exportBtn" class="btn btn-secondary">💾 Export Data</button>
+                    <button id="clearAllBtn" class="btn btn-danger">🗑️ Clear All</button>
+                </div>
+                <div id="customerTable"></div>
+            </section>
+
+            <!-- Schedule View -->
+            <section class="card schedule-view" id="scheduleView">
+                <h2>📋 Service Schedule</h2>
+                <div class="date-filter">
+                    <label for="scheduleStartDate">From:</label>
+                    <input type="date" id="scheduleStartDate">
+                    <label for="scheduleEndDate">To:</label>
+                    <input type="date" id="scheduleEndDate">
+                    <button id="filterScheduleBtn" class="btn btn-primary">Filter</button>
+                </div>
+                <div id="scheduleContent"></div>
+            </section>
+
+            <!-- Route Optimizer -->
+            <section class="card route-view" id="routeView">
+                <h2>🗺️ Optimized Routes</h2>
+                <div class="route-options">
+                    <label for="routeDate">Select Date:</label>
+                    <input type="date" id="routeDate">
+                    <label for="startLocation">Starting Location:</label>
+                    <input type="text" id="startLocation" placeholder="Enter your starting address">
+                    <button id="calculateRouteBtn" class="btn btn-primary">Calculate Route</button>
+                </div>
+                <div id="routeContent"></div>
+            </section>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
