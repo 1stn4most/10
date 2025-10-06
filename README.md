@@ -13,6 +13,34 @@ _Get started using GitHub in less than an hour._
 
 </header>
 
+---
+
+## 🗓️ Customer Scheduling & Route Optimizer
+
+This repository now includes a complete **Customer Scheduling and Route Optimization Application** for cleaning service businesses!
+
+### ✨ Quick Start
+
+1. Open `index.html` in your web browser
+2. Upload the `sample-customers.csv` file or add customers manually
+3. Click "Generate Schedule" to see upcoming services
+4. Click "Optimize Routes" to create fuel-efficient daily routes
+
+### 📋 Key Features
+
+- **CSV Upload**: Import customer spreadsheets with service details
+- **Service Tracking**: Automatic next-service-date calculation based on frequency
+- **Route Optimization**: Fuel-efficient routing using nearest-neighbor algorithm
+- **Special Instructions**: Store location-specific notes and requirements
+- **Status Monitoring**: Visual indicators for service status (overdue, due soon, etc.)
+- **Data Export**: Export customer data back to CSV format
+
+### 📚 Documentation
+
+See [SCHEDULER_README.md](SCHEDULER_README.md) for complete documentation, features, and usage instructions.
+
+---
+
 <!--
   <<< Author notes: Step 1 >>>
   Choose 3-5 steps for your course.
