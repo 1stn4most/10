@@ -35,3 +35,19 @@
 .Trashes
 ehthumbs.db
 Thumbs.db
+
+# Python #
+##########
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+.venv
+
+# Excel files (test data) #
+###########################
+*.xlsx
+create_sample_data.py
