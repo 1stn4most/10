@@ -1,0 +1,920 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Red Wolf Electric | Southern California Electrical Services</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    /* Root theme */
+    :root {
+      --color-bg: #050505;
+      --color-primary: #e02424;
+      --color-light: #ffffff;
+      --color-muted: #b3b3b3;
+      --color-panel: #0d0d0d;
+      --color-border: #1a1a1a;
+      --glow: 0 0 18px rgba(224, 36, 36, 0.6);
+    }
+    :root.emergency {
+      --color-bg: #020202;
+      --color-primary: #ff3b30;
+      --color-panel: #0b0b0b;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      background: var(--color-bg);
+      color: var(--color-light);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; display: block; }
+    .page {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1.25rem 4rem;
+    }
+    h1, h2, h3, h4 { font-family: 'Oswald', 'Inter', sans-serif; letter-spacing: 0.02em; margin: 0 0 0.5rem; }
+    p { margin: 0 0 0.75rem; color: var(--color-muted); }
+    button, .btn {
+      border: none;
+      font-family: 'Inter', sans-serif;
+      cursor: pointer;
+      transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease, color 0.2s ease;
+    }
+    /* Sticky nav */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 999;
+      background: rgba(5, 5, 5, 0.9);
+      backdrop-filter: blur(6px);
+      border-bottom: 1px solid var(--color-border);
+    }
+    .nav-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0.9rem 1.25rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+    .logo {
+      width: 160px;
+      height: 46px;
+      background: linear-gradient(135deg, #0f0f0f, #1b1b1b);
+      border: 1px solid var(--color-border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--color-light);
+      font-family: 'Oswald', sans-serif;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      position: relative;
+      overflow: hidden;
+    }
+    .logo::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(120deg, rgba(224,36,36,0.35), transparent 50%);
+    }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 1.2rem;
+      margin-left: auto;
+      font-size: 0.95rem;
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+    }
+    .nav-links a { color: var(--color-muted); }
+    .nav-links a:hover { color: var(--color-light); }
+    .nav-cta {
+      margin-left: 0.5rem;
+      padding: 0.65rem 1rem;
+      background: var(--color-primary);
+      color: var(--color-light);
+      border-radius: 8px;
+      box-shadow: var(--glow);
+      font-weight: 600;
+    }
+    .nav-cta:hover { transform: translateY(-2px); }
+    /* Hero */
+    .hero {
+      position: relative;
+      padding: 3.5rem 0 2.5rem;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 20% 20%, rgba(224,36,36,0.35), transparent 35%),
+                  radial-gradient(circle at 80% 10%, rgba(224,36,36,0.25), transparent 30%),
+                  linear-gradient(135deg, rgba(224,36,36,0.18), rgba(5,5,5,0.9));
+      pointer-events: none;
+      transform: skewY(-2deg);
+    }
+    .hero-grid {
+      position: relative;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.8rem;
+      align-items: center;
+    }
+    .badge-row {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin: 1rem 0;
+      color: var(--color-muted);
+      font-weight: 600;
+    }
+    .badge {
+      border: 1px solid var(--color-border);
+      padding: 0.6rem 0.9rem;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.02);
+    }
+    .cta-row { display: flex; gap: 1rem; flex-wrap: wrap; align-items: center; }
+    .btn-primary {
+      background: var(--color-primary);
+      color: var(--color-light);
+      padding: 0.9rem 1.2rem;
+      border-radius: 10px;
+      font-weight: 700;
+      box-shadow: var(--glow);
+    }
+    .btn-outline {
+      padding: 0.88rem 1.1rem;
+      border: 1px solid var(--color-light);
+      background: transparent;
+      color: var(--color-primary);
+      font-weight: 700;
+      border-radius: 10px;
+    }
+    .btn-primary:hover, .btn-outline:hover { transform: translateY(-2px); }
+    .hero-visual {
+      position: relative;
+      background: linear-gradient(135deg, #0b0b0b, #121212);
+      border: 1px solid var(--color-border);
+      border-radius: 16px;
+      padding: 1rem;
+      overflow: hidden;
+      box-shadow: 0 12px 40px rgba(0,0,0,0.45);
+      min-height: 280px;
+    }
+    .hero-visual::after {
+      content: '';
+      position: absolute;
+      inset: 10% 15%;
+      border: 2px solid rgba(224,36,36,0.4);
+      filter: drop-shadow(0 0 12px rgba(224,36,36,0.5));
+      transform: rotate(-4deg);
+    }
+    .hero-visual .shape {
+      position: absolute;
+      width: 140px;
+      height: 140px;
+      background: radial-gradient(circle, rgba(224,36,36,0.7), transparent 65%);
+      filter: blur(12px);
+    }
+    .shape.one { top: 8%; left: 6%; }
+    .shape.two { bottom: 6%; right: 10%; }
+    .hero-visual .lines {
+      position: absolute;
+      inset: 18% 12%;
+      background: repeating-linear-gradient(135deg, rgba(224,36,36,0.2) 0 8px, transparent 8px 16px);
+      mix-blend-mode: screen;
+      transform: translateZ(0);
+    }
+    /* Key benefits */
+    .section {
+      margin: 3rem 0;
+    }
+    .section-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+    .pill {
+      background: rgba(224,36,36,0.15);
+      color: var(--color-light);
+      padding: 0.45rem 0.8rem;
+      border-radius: 999px;
+      font-weight: 600;
+      border: 1px solid rgba(224,36,36,0.3);
+    }
+    .grid {
+      display: grid;
+      gap: 1rem;
+    }
+    .grid.cols-4 { grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); }
+    .grid.cols-3 { grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); }
+    .card {
+      background: var(--color-panel);
+      border: 1px solid var(--color-border);
+      border-radius: 14px;
+      padding: 1.1rem;
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+    }
+    .card:hover { transform: translateY(-4px); border-color: rgba(224,36,36,0.4); box-shadow: var(--glow); }
+    .icon-circle {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      border: 1px solid rgba(224,36,36,0.4);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(224,36,36,0.1);
+      margin-bottom: 0.5rem;
+    }
+    /* Services columns */
+    .columns {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1rem;
+    }
+    .service-card h3 { color: var(--color-light); }
+    .micro {
+      font-size: 0.9rem;
+      color: var(--color-primary);
+      font-weight: 600;
+    }
+    /* Safety scrollytelling */
+    .safety-wrap {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.2rem;
+      align-items: center;
+    }
+    .panel-visual {
+      position: relative;
+      height: 320px;
+      border-radius: 16px;
+      background: linear-gradient(120deg, #0d0d0d, #141414);
+      border: 1px solid var(--color-border);
+      overflow: hidden;
+      transform: translateX(-40px);
+      opacity: 0;
+      transition: transform 0.6s ease, opacity 0.6s ease;
+    }
+    .panel-visual.active { transform: translateX(0); opacity: 1; }
+    .panel-visual::before {
+      content: '';
+      position: absolute;
+      inset: 12% 18%;
+      border: 2px solid rgba(224,36,36,0.4);
+      box-shadow: inset 0 0 18px rgba(224,36,36,0.4);
+      border-radius: 10px;
+    }
+    .panel-visual .wires {
+      position: absolute;
+      inset: 18% 24%;
+      background: repeating-linear-gradient(0deg, rgba(224,36,36,0.5) 0 3px, transparent 3px 8px);
+      filter: blur(0.3px);
+    }
+    .hazard {
+      background: var(--color-panel);
+      border: 1px solid var(--color-border);
+      border-left: 3px solid var(--color-primary);
+      padding: 0.9rem 1rem;
+      border-radius: 12px;
+      margin-bottom: 0.8rem;
+      transform: translateX(30px);
+      opacity: 0;
+      transition: transform 0.5s ease, opacity 0.5s ease;
+    }
+    .hazard.active { transform: translateX(0); opacity: 1; }
+    /* Before / After masks */
+    .before-after {
+      position: relative;
+      overflow: hidden;
+      border-radius: 16px;
+      border: 1px solid var(--color-border);
+      min-height: 260px;
+      background: linear-gradient(135deg, #151515 50%, #0c0c0c 50%);
+    }
+    .before-after .label {
+      position: absolute;
+      top: 12px;
+      left: 12px;
+      background: rgba(0,0,0,0.6);
+      padding: 0.4rem 0.8rem;
+      border-radius: 999px;
+      font-weight: 600;
+      border: 1px solid rgba(224,36,36,0.4);
+    }
+    .before-after .after {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(224,36,36,0.2), rgba(224,36,36,0.6)), url('https://images.unsplash.com/photo-1582719478210-2adf5c12e498?auto=format&fit=crop&w=1200&q=60') center/cover;
+      mask-image: linear-gradient(90deg, transparent 0%, transparent var(--reveal, 0%), black var(--reveal, 0%), black 100%);
+      transition: var(--mask-speed, 0.6s) ease;
+      box-shadow: inset 0 0 30px rgba(224,36,36,0.4);
+    }
+    .before-after:hover { box-shadow: var(--glow); }
+    .before-after:hover .after {
+      --reveal: 100%;
+      --mask-speed: 0.9s;
+    }
+    .before-after .after::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 70% 20%, rgba(255,255,255,0.15), transparent 45%);
+      opacity: 0;
+      transition: opacity 0.4s ease;
+    }
+    .before-after:hover .after::after { opacity: 1; }
+    /* Projects */
+    .tag {
+      display: inline-block;
+      padding: 0.35rem 0.65rem;
+      border-radius: 8px;
+      background: rgba(224,36,36,0.12);
+      color: var(--color-light);
+      font-weight: 600;
+      border: 1px solid rgba(224,36,36,0.3);
+    }
+    /* Testimonials */
+    .stars { color: #f7d046; letter-spacing: 1px; }
+    /* Contact */
+    form {
+      display: grid;
+      gap: 0.75rem;
+    }
+    input, select, textarea {
+      width: 100%;
+      padding: 0.85rem;
+      border-radius: 10px;
+      border: 1px solid var(--color-border);
+      background: #0a0a0a;
+      color: var(--color-light);
+      font-size: 1rem;
+    }
+    textarea { min-height: 120px; }
+    .contact-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1rem;
+      align-items: start;
+    }
+    .info-block {
+      background: var(--color-panel);
+      border: 1px solid var(--color-border);
+      border-radius: 14px;
+      padding: 1rem;
+    }
+    .map {
+      margin-top: 0.9rem;
+      height: 180px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, #0f0f0f, #1a1a1a);
+      border: 1px dashed var(--color-border);
+      display: grid;
+      place-items: center;
+      color: var(--color-muted);
+    }
+    /* Meet the team */
+    .bento {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1rem;
+    }
+    .team-card {
+      position: relative;
+      overflow: hidden;
+    }
+    .kinetic {
+      display: inline-block;
+      transition: transform 0.2s ease;
+    }
+    .team-card:hover .kinetic { transform: translateY(-3px) skewX(-4deg); color: var(--color-primary); }
+    .status {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      background: rgba(0,0,0,0.6);
+      padding: 0.3rem 0.8rem;
+      border-radius: 999px;
+      border: 1px solid rgba(224,36,36,0.4);
+      font-weight: 600;
+    }
+    /* Floating quote tool */
+    .quote-widget {
+      position: fixed;
+      bottom: 22px;
+      right: 22px;
+      z-index: 998;
+    }
+    .quote-button {
+      background: var(--color-primary);
+      color: var(--color-light);
+      padding: 0.8rem 1rem;
+      border-radius: 12px;
+      box-shadow: var(--glow);
+      font-weight: 700;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+    .quote-panel {
+      margin-top: 0.75rem;
+      width: 320px;
+      background: var(--color-panel);
+      border: 1px solid var(--color-border);
+      border-radius: 14px;
+      padding: 1rem;
+      display: none;
+    }
+    .quote-panel.open { display: block; }
+    .range {
+      font-weight: 700;
+      color: var(--color-light);
+      margin-top: 0.5rem;
+    }
+    /* Sticky trust footer */
+    .trust-footer {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: rgba(5,5,5,0.94);
+      border-top: 1px solid var(--color-border);
+      padding: 0.4rem 0.8rem;
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+      font-size: 0.9rem;
+      z-index: 997;
+    }
+    /* Footer */
+    footer {
+      margin-top: 3rem;
+      padding: 2rem 0 3rem;
+      color: var(--color-muted);
+      font-size: 0.95rem;
+    }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1rem;
+    }
+    .socials a {
+      display: inline-flex;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid var(--color-border);
+      margin-right: 0.5rem;
+    }
+    .socials a:hover { border-color: var(--color-primary); color: var(--color-primary); box-shadow: var(--glow); }
+    /* Responsive tweaks */
+    @media (max-width: 720px) {
+      .nav-links { display: none; }
+      .hero { padding-top: 2.5rem; }
+      .panel-visual { min-height: 260px; }
+      .trust-footer { font-size: 0.85rem; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { transition: none !important; animation: none !important; }
+    }
+  </style>
+</head>
+<body>
+  <!-- Sticky Navigation -->
+  <nav>
+    <div class="nav-inner">
+      <div class="logo" aria-label="Red Wolf Electric logo">Red Wolf Electric</div>
+      <div class="nav-links">
+        <a href="#home">Home</a>
+        <a href="#services">Services</a>
+        <a href="#commercial">Commercial</a>
+        <a href="#residential">Residential</a>
+        <a href="#about">About</a>
+        <a href="#testimonials">Testimonials</a>
+        <a href="#contact">Contact</a>
+        <a class="nav-cta" href="#quote">Get a Free Quote</a>
+      </div>
+    </div>
+  </nav>
+
+  <main class="page">
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+      <div class="hero-grid">
+        <div>
+          <p class="pill">Licensed • Insured • 24/7 Emergency</p>
+          <h1>Powering Homes &amp; Businesses with Precision.</h1>
+          <p>Red Wolf Electric delivers code-compliant, safety-first electrical work with rapid response across Southern California. Trusted by homeowners and facility managers for clear communication, clean workmanship, and dependable uptime.</p>
+          <div class="cta-row">
+            <a class="btn btn-primary" href="#quote">Request a Free Quote</a>
+            <a class="btn btn-outline" href="tel:+19515551234">Call Now</a>
+          </div>
+          <div class="badge-row">
+            <span class="badge">Licensed &amp; Insured</span>
+            <span class="badge">24/7 Emergency Service</span>
+            <span class="badge">Serving Southern California</span>
+          </div>
+        </div>
+        <div class="hero-visual">
+          <div class="shape one"></div>
+          <div class="shape two"></div>
+          <div class="lines"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Key benefits strip -->
+    <section class="section" aria-label="Key Benefits">
+      <div class="section-header">
+        <h2>Built for safety, speed, and clarity.</h2>
+        <span class="pill">Same-Day Dispatch</span>
+      </div>
+      <div class="grid cols-4">
+        <div class="card">
+          <div class="icon-circle">⚡</div>
+          <h4>Same-Day Service</h4>
+          <p>Rapid response crews with stocked vans to fix issues on the first visit.</p>
+        </div>
+        <div class="card">
+          <div class="icon-circle">📏</div>
+          <h4>Code-Compliant Work</h4>
+          <p>Every install meets NEC and local AHJ requirements with documented testing.</p>
+        </div>
+        <div class="card">
+          <div class="icon-circle">💰</div>
+          <h4>Upfront Pricing</h4>
+          <p>No surprises—clear scopes, line-item pricing, and approvals before we start.</p>
+        </div>
+        <div class="card">
+          <div class="icon-circle">🧹</div>
+          <h4>Clean Technicians</h4>
+          <p>Respectful pros with boot covers, floor protection, and tidy job sites.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Services overview -->
+    <section id="services" class="section">
+      <div class="section-header">
+        <h2>Residential &amp; Commercial Specialists</h2>
+        <span class="pill">Project-ready crews</span>
+      </div>
+      <div class="columns">
+        <div id="residential" class="card service-card">
+          <h3>Residential</h3>
+          <p>Panel upgrades • Lighting design &amp; install • EV charger install • Smart home circuits • Troubleshooting &amp; repairs.</p>
+          <div class="micro">Learn more ↗</div>
+        </div>
+        <div id="commercial" class="card service-card">
+          <h3>Commercial</h3>
+          <p>Tenant improvements • Warehouse lighting • Preventive maintenance • Emergency repairs • Backup power and ATS.</p>
+          <div class="micro">Learn more ↗</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Safety Audit Scrollytelling -->
+    <section class="section" aria-label="Safety Audit">
+      <div class="section-header">
+        <h2>Interactive Safety Audit</h2>
+        <span class="pill">Scroll to reveal</span>
+      </div>
+      <div class="safety-wrap">
+        <div class="panel-visual" aria-hidden="true">
+          <div class="wires"></div>
+        </div>
+        <div>
+          <div class="hazard">
+            <strong>Outdated Aluminum Wiring</strong>
+            <p>Prone to overheating and loose connections. We replace or retrofit with copper-rated devices.</p>
+          </div>
+          <div class="hazard">
+            <strong>Overloaded Circuits</strong>
+            <p>Hidden overloads show up as nuisance trips. We balance loads, add circuits, and upgrade panels safely.</p>
+          </div>
+          <div class="hazard">
+            <strong>Missing GFCI / AFCI Protection</strong>
+            <p>Life-safety protection installed where code requires—kitchens, baths, exterior, and bedrooms.</p>
+          </div>
+          <div class="hazard">
+            <strong>Aging Breakers &amp; Panels</strong>
+            <p>Obsolete equipment like Zinsco or Federal Pacific replaced with modern, warrantied gear.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Before & After -->
+    <section class="section">
+      <div class="section-header">
+        <h2>Before &amp; After: See the Difference</h2>
+        <span class="pill">Hover to reveal</span>
+      </div>
+      <div class="columns">
+        <div class="before-after">
+          <div class="label">Residential Rewire</div>
+          <div class="after" aria-hidden="true"></div>
+        </div>
+        <div class="before-after">
+          <div class="label">Industrial Panel Refresh</div>
+          <div class="after" aria-hidden="true"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Featured projects -->
+    <section class="section" id="about">
+      <div class="section-header">
+        <h2>Featured Projects</h2>
+        <span class="pill">Proof in the field</span>
+      </div>
+      <div class="grid cols-3">
+        <div class="card">
+          <div class="tag">Residential</div>
+          <h4>EV-Ready Modern Home</h4>
+          <p>200A panel upgrade with whole-home surge and dual EV chargers.</p>
+        </div>
+        <div class="card">
+          <div class="tag">Commercial</div>
+          <h4>Warehouse Lighting Revamp</h4>
+          <p>High-bay LED retrofit cutting energy costs by 42% with smart sensors.</p>
+        </div>
+        <div class="card">
+          <div class="tag">Commercial</div>
+          <h4>Retail Tenant Improvement</h4>
+          <p>New circuits, emergency egress lighting, and POS power isolation.</p>
+        </div>
+        <div class="card">
+          <div class="tag">Residential</div>
+          <h4>Backyard Lighting</h4>
+          <p>Low-voltage architectural lighting with smart zoning and timers.</p>
+        </div>
+        <div class="card">
+          <div class="tag">Commercial</div>
+          <h4>Backup Power &amp; ATS</h4>
+          <p>Critical load panel with automatic transfer switch for medical office.</p>
+        </div>
+        <div class="card">
+          <div class="tag">Residential</div>
+          <h4>Whole-Home Troubleshoot</h4>
+          <p>Resolved recurring breaker trips with balanced loads and arc-fault protection.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Why choose -->
+    <section class="section">
+      <div class="section-header">
+        <h2>Why Choose Red Wolf Electric</h2>
+        <span class="pill">Proven pillars</span>
+      </div>
+      <div class="grid cols-4">
+        <div class="card">
+          <div class="icon-circle">🛡️</div>
+          <h4>Safety First</h4>
+          <p>Job hazard analyses on every site and PPE-compliant crews.</p>
+        </div>
+        <div class="card">
+          <div class="icon-circle">🔍</div>
+          <h4>Transparent Pricing</h4>
+          <p>Clear scopes, photo documentation, and signed approvals.</p>
+        </div>
+        <div class="card">
+          <div class="icon-circle">👷</div>
+          <h4>Experienced Team</h4>
+          <p>Certified electricians with EV, backup power, and lighting specialties.</p>
+        </div>
+        <div class="card">
+          <div class="icon-circle">🚨</div>
+          <h4>Fast Response</h4>
+          <p>24/7 emergency dispatch with live phone support.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Meet the team -->
+    <section class="section">
+      <div class="section-header">
+        <h2>Meet the Team</h2>
+        <span class="pill">Certified &amp; approachable</span>
+      </div>
+      <div class="bento">
+        <div class="card team-card">
+          <div class="status" data-status>On a call</div>
+          <h4><span class="kinetic">Alex Ramos</span></h4>
+          <p>Tesla EV charger specialist • OSHA 30 • Arc-fault diagnostics.</p>
+        </div>
+        <div class="card team-card">
+          <div class="status" data-status>Available</div>
+          <h4><span class="kinetic">Jamie Lee</span></h4>
+          <p>Lighting designer • Title 24 compliant installs • Smart controls.</p>
+        </div>
+        <div class="card team-card">
+          <div class="status" data-status>Dispatched</div>
+          <h4><span class="kinetic">Chris Moreno</span></h4>
+          <p>Panel upgrades • Emergency power • Infrared inspections.</p>
+        </div>
+        <div class="card team-card">
+          <div class="status" data-status>On standby</div>
+          <h4><span class="kinetic">Taylor Brooks</span></h4>
+          <p>Commercial maintenance • Generator ATS • Clean room wiring.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section id="testimonials" class="section">
+      <div class="section-header">
+        <h2>Clients Back Us Up</h2>
+        <span class="pill">Residential &amp; Commercial</span>
+      </div>
+      <div class="grid cols-3">
+        <div class="card">
+          <div class="stars">★★★★★</div>
+          <p>“They rewired our 60s home safely and faster than promised. Clean, courteous, and transparent.”</p>
+          <strong>Maria G. • Riverside</strong>
+        </div>
+        <div class="card">
+          <div class="stars">★★★★★</div>
+          <p>“Warehouse lighting upgrade cut our energy bill dramatically. Night shift loves the visibility.”</p>
+          <strong>Logistics Ops • San Bernardino</strong>
+        </div>
+        <div class="card">
+          <div class="stars">★★★★★</div>
+          <p>“Emergency call at 1 AM—tech arrived in 30 minutes and kept our restaurant running.”</p>
+          <strong>Chef L. • Orange County</strong>
+        </div>
+      </div>
+    </section>
+
+    <!-- Service area & Contact -->
+    <section id="contact" class="section">
+      <div class="section-header">
+        <h2>Serving Southern California</h2>
+        <span class="pill">Riverside • San Bernardino • Orange County</span>
+      </div>
+      <p>From Riverside to Orange County and nearby cities, Red Wolf Electric keeps homes and businesses powered with reliable, code-compliant solutions.</p>
+      <div class="contact-grid">
+        <div class="card">
+          <h3>Request Service</h3>
+          <form id="contact-form">
+            <input type="text" name="name" placeholder="Name" required>
+            <input type="tel" name="phone" placeholder="Phone" required>
+            <input type="email" name="email" placeholder="Email" required>
+            <select name="service">
+              <option>Service type</option>
+              <option>Residential</option>
+              <option>Commercial</option>
+              <option>Emergency</option>
+            </select>
+            <textarea name="message" placeholder="Tell us about your project" required></textarea>
+            <button class="btn btn-primary" type="submit">Send Request</button>
+          </form>
+        </div>
+        <div class="info-block">
+          <h3>Call or Visit</h3>
+          <p><strong>Phone:</strong> <a href="tel:+19515551234">951-555-1234</a></p>
+          <p><strong>Hours:</strong> 24/7 Emergency • Standard 7a-7p</p>
+          <a class="btn btn-outline" href="tel:+19515551234">Call Now</a>
+          <div class="map">Map preview • Southern California</div>
+          <div style="margin-top:0.8rem;">
+            <a class="btn btn-primary" href="https://www.housecallpro.com" target="_blank" rel="noreferrer">Book via Housecall Pro</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Quote anchor -->
+    <section id="quote" class="section">
+      <div class="section-header">
+        <h2>Get Your Instant Estimate</h2>
+        <span class="pill">Smart ranges</span>
+      </div>
+      <p>Answer a couple of quick questions and see a rough price range. We’ll confirm details and lock in a time.</p>
+    </section>
+  </main>
+
+  <!-- Floating quote tool -->
+  <div class="quote-widget">
+    <button class="quote-button" id="quote-toggle">Estimate Tool</button>
+    <div class="quote-panel" id="quote-panel">
+      <label>
+        Scope:
+        <select id="scope">
+          <option value="panel">Panel Upgrade</option>
+          <option value="lighting">Lighting Install</option>
+          <option value="ev">EV Charger</option>
+          <option value="troubleshoot">Troubleshooting</option>
+        </select>
+      </label>
+      <label>
+        Urgency:
+        <select id="urgency">
+          <option value="standard">Standard</option>
+          <option value="rush">Rush</option>
+          <option value="emergency">Emergency</option>
+        </select>
+      </label>
+      <div class="range" id="range">$0 - $0</div>
+      <p style="color:var(--color-muted); font-size:0.9rem;">Ranges are estimates. We confirm on-site and honor quoted scopes.</p>
+      <button class="btn btn-primary" style="width:100%; margin-top:0.4rem;">Lock in my estimate</button>
+    </div>
+  </div>
+
+  <!-- Sticky trust footer -->
+  <div class="trust-footer">
+    <span>CA License #000000 • Best of Riverside 2025</span>
+    <span>EVITP Certified • OSHA 30</span>
+    <span>5-Star Google &amp; Yelp</span>
+  </div>
+
+  <!-- Footer -->
+  <footer class="page">
+    <div class="footer-grid">
+      <div>
+        <h4>Red Wolf Electric</h4>
+        <p>Precision electrical work for homes and businesses across Southern California.</p>
+      </div>
+      <div>
+        <h4>Quick Links</h4>
+        <p><a href="#services">Services</a> • <a href="#about">About</a> • <a href="#contact">Contact</a></p>
+      </div>
+      <div>
+        <h4>Stay Connected</h4>
+        <div class="socials">
+          <a href="#" aria-label="Facebook">F</a>
+          <a href="#" aria-label="Instagram">I</a>
+          <a href="#" aria-label="LinkedIn">L</a>
+        </div>
+      </div>
+    </div>
+    <p style="margin-top:1rem;">© 2026 Red Wolf Electric. All rights reserved.</p>
+  </footer>
+
+  <script>
+    // IntersectionObserver for scrollytelling reveal
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) entry.target.classList.add('active');
+      });
+    }, { threshold: 0.3 });
+    document.querySelectorAll('.panel-visual, .hazard').forEach(el => observer.observe(el));
+
+    // Floating quote widget behavior
+    const toggle = document.getElementById('quote-toggle');
+    const panel = document.getElementById('quote-panel');
+    toggle.addEventListener('click', () => panel.classList.toggle('open'));
+
+    const scope = document.getElementById('scope');
+    const urgency = document.getElementById('urgency');
+    const range = document.getElementById('range');
+
+    function updateRange() {
+      const base = { panel: [1800, 5200], lighting: [450, 2800], ev: [750, 2200], troubleshoot: [180, 650] }[scope.value];
+      const multiplier = urgency.value === 'rush' ? 1.15 : urgency.value === 'emergency' ? 1.35 : 1;
+      const min = Math.round(base[0] * multiplier);
+      const max = Math.round(base[1] * multiplier);
+      range.textContent = `$${min.toLocaleString()} - $${max.toLocaleString()}`;
+    }
+    scope.addEventListener('change', updateRange);
+    urgency.addEventListener('change', updateRange);
+    updateRange();
+
+    // Emergency dark mode for late-night visitors
+    const hour = new Date().getHours();
+    if (hour < 5 || hour >= 22) {
+      document.documentElement.classList.add('emergency');
+      toggle.textContent = 'Emergency Call Now';
+      toggle.onclick = () => window.location.href = 'tel:+19515551234';
+      panel.style.borderColor = 'rgba(255, 59, 48, 0.5)';
+    }
+
+    // Rotate team statuses for live feel
+    const statuses = ['On a call', 'Available', 'Dispatched', 'On standby'];
+    setInterval(() => {
+      document.querySelectorAll('[data-status]').forEach(el => {
+        const next = statuses[Math.floor(Math.random() * statuses.length)];
+        el.textContent = next;
+      });
+    }, 5000);
+  </script>
+</body>
+</html>
