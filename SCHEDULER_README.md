@@ -58,6 +58,41 @@ python route_scheduler.py
 
 4. Review the output file: `Scheduled_Routes_Output.xlsx`
 
+## QC Operations Workbook Generator (Excel Management System MVP)
+
+The repository now includes a dedicated generator for the Quality Control & Operations workbook:
+
+```bash
+python build_qc_operations_workbook.py
+```
+
+This creates:
+
+- `QC_Operations_Management_System_v1.xlsx`
+
+Generated workbook structure:
+
+1. `QC LOG` (master data entry table)
+2. `TECHNICIAN CAPACITY`
+3. `TECHNICIAN UTILIZATION`
+4. `DASHBOARD`
+5. `TECHNICIAN SCORECARDS`
+6. `MISSED JOBS & MISSED REVENUE`
+7. `CAT LOG`
+8. `HOT LIST`
+9. `SITE CONDITIONS LOG`
+10. `BIWEEKLY MANAGEMENT REPORT`
+
+MVP workbook features included:
+
+- Single-entry master table design with formula-driven downstream sheets
+- Dropdown data validation for statuses and Yes/No controls
+- Auto-calculated Final QC score from objective inspection checks
+- Automatic utilization, completion, complaint, go-back, and photo compliance metrics
+- Auto-populated CAT, Hot List, Site Conditions, and Missed Jobs views
+- Dashboard KPI panel with trend and reason analysis chart areas
+- Biweekly management report sheet ready for executive review
+
 ## Output Format
 
 The output Excel file contains:
